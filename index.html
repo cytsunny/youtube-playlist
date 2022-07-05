@@ -1,0 +1,109 @@
+<div id="video-youtube"></div>
+<br>
+<textarea id="playlist-object" rows="20" cols="70">
+</textarea>
+<button id="update-button">Update Play List</button>
+
+<script id="youtube-tracking-script">
+
+    var playList = [
+        {
+            videoId: 'dBK0gKW61NU',
+            start: 222,
+            end: 224
+        },
+        {
+            videoId: 'LtCfuHLrixY',
+            start: 210,
+            end: 213
+        },
+        {
+            videoId: 'pU_nCvEq_Y4',
+            start: 18526,
+            end: 18529
+        },
+        {
+            videoId: 'EHpxi7khHb0',
+            start: 3008,
+            end: 3010
+        }
+    ];
+
+    var textarea = document.getElementById('playlist-object');
+    textarea.value = JSON.stringify(playList);
+
+    var currentId = 0;
+
+    var updateButton = document.getElementById('update-button');
+    updateButton.addEventListener('click', function(event) {
+        var playListString = document.getElementById('playlist-object').value;
+        try {
+            playList = JSON.parse(playListString);
+        }
+        catch (exception) {
+            alert('JSON format error. Please check your input and try again.')
+            return;
+        }
+        currentId = 0;
+        player.loadVideoById({
+            'videoId': playList[currentId].videoId,
+            'startSeconds': playList[currentId].start,
+            'endSeconds': playList[currentId].end
+        });
+    });
+
+    
+
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+
+    var firstScriptTag = document.getElementById("youtube-tracking-script");
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video-youtube', {
+            height: '500px',
+            width: '1000px',
+            videoId: playList[0].videoId,
+            playerVars: {
+                'autoplay': 0,
+                'start': playList[0].start,
+                'end': playList[0].end
+            },
+            events: {
+                'onStateChange': videoPlay
+            }
+        });
+    }
+
+    var debouncing = false;
+
+    function videoPlay(event) {
+        if (event.data == YT.PlayerState.PLAYING) {
+            debouncing = false;
+            console.log("YouTube Video is PLAYING!!");
+        }
+        if (event.data == YT.PlayerState.PAUSED) {
+            console.log("YouTube Video is PAUSED!!");
+        }
+
+        // after loading next video, before startin the next one, one extra end event will be passed,
+        // so need this debouncing logic
+        if ( debouncing )
+            return;
+        if ( event.data == YT.PlayerState.ENDED ) {
+            debouncing = true;
+            console.log("YouTube Video is ENDING!!");
+            currentId++;
+            if ( playList[currentId] ) {
+                player.loadVideoById({
+                    'videoId': playList[currentId].videoId,
+                    'startSeconds': playList[currentId].start,
+                    'endSeconds': playList[currentId].end
+                });
+            }
+        }
+    }
+</script>
