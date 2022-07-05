@@ -1,5 +1,5 @@
 # Youtube Playlist with Start and End Time
----
+
 Long long time ago, one is able to set start time and end time when adding a video to a play list. This function is removed ( [Youtube Help ticket related to this](https://support.google.com/youtube/forum/AAAAiuErobUGipu_cCDScI/?hl=en&gpf=%23!topic%2Fyoutube%2FGipu_cCDScI]) ), but I thinks that function should be added back. So, I have written this minimalist player so I can personally use it, and if this page becomes popular, it should be acting as a proof to persuade Youtube to add this function back.
 
 ## But why would this function be needed?
@@ -16,7 +16,7 @@ To change it to your own videos, you can just edit the JSON below. You may not k
 https://www.youtube.com/watch?v=EHpxi7khHb0  
 The `videoId` is EHpxi7khHb0  
 
-`start` is the start time in seconds. So if you want to start at 3:15, you will need to input ast 3 * 60 + 15 = 195.
+`start` is the start time in seconds. So if you want to start at 3:15, you will need to input ast 3 * 60 + 15 = 195.  
 `end` is the end time in seconds. So if you want to end at 3:30, use similar calculation as above and the value should be 210.
 
 ## Known bug
