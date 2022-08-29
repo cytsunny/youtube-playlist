@@ -2,6 +2,8 @@
 
 Long long time ago, one is able to set start time and end time when adding a video to a play list. This function is removed ( [Youtube Help ticket related to this](https://support.google.com/youtube/forum/AAAAiuErobUGipu_cCDScI/?hl=en&gpf=%23!topic%2Fyoutube%2FGipu_cCDScI]) ), but I thinks that function should be added back. So, I have written this minimalist player so I can personally use it, and if this page becomes popular, it should be acting as a proof to persuade Youtube to add this function back.
 
+[Link to the playlist tool](https://cytsunny.github.io/youtube-playlist/)
+
 ## But why would this function be needed?
 The reason I want this function back is because I want to play the singing part of karaoke stream of Vtubers. Currently you can only download the full streaming video, cut out the section you want to play and upload it as new video. Not only it is time consuming, it is stealing view count from the Vtuber who actually sing that song. I feel that if I am listening to a Vtuber's singing plaback, the view count should go to the original creator.
 
