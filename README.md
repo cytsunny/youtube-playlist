@@ -21,6 +21,8 @@ The `videoId` is EHpxi7khHb0
 `start` is the start time in seconds. So if you want to start at 3:15, you will need to input ast 3 * 60 + 15 = 195.  
 `end` is the end time in seconds. So if you want to end at 3:30, use similar calculation as above and the value should be 210.
 
+Update (2025-02-20): Added a function to add new entry, so you don't need to do the calculation yourself.
+
 ## Known bug
 If when you are playing the video and you accidentally click outside the time range. For example, your video is to play from 3:15 to 3:30, but you accidentally click 4:15 of the video, you can only play to the end to have the next video loaded.
 
